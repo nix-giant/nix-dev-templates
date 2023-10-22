@@ -64,6 +64,11 @@
     //
 
     {
-      templates = { };
+      templates = {
+        elixir = {
+          path = ./elixir;
+          description = "Elixir development environment";
+        };
+      };
     };
 }
