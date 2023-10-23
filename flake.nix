@@ -69,6 +69,10 @@
           path = ./elixir;
           description = "Elixir development environment";
         };
+        python = {
+          path = ./python;
+          description = "Python development environment";
+        };
       };
     };
 }
