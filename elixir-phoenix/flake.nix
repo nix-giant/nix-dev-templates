@@ -16,7 +16,7 @@
       devShells = forEachSupportedSystem ({ pkgs }: {
         default = with pkgs; mkShell {
           packages = [
-            beam.packages.erlangR25.elixir_1_14
+            beam.packages.erlang_25.elixir_1_14
             nodejs_18
           ] ++
           # Linux only
