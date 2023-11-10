@@ -17,6 +17,9 @@
         default = with pkgs; mkShell {
           packages = [
             beam.packages.erlang_25.elixir_1_14
+
+            # Are you using Phoenix? Maybe nodejs is required.
+            # nodejs_18
           ] ++
           # Linux only
           lib.optionals stdenv.isLinux [
