@@ -65,19 +65,19 @@
 
     {
       templates = {
-        elixir = {
-          path = ./elixir;
-          description = "Elixir development environment";
+        elixir-lib = {
+          path = ./elixir/lib;
+          description = "Development environment for Elixir library";
         };
 
-        phoenix = {
-          path = ./phoenix;
-          description = "Phoenix development environment";
+        elixir-phoenix = {
+          path = ./elixir/phoenix;
+          description = "Development environment for Phoenix project";
         };
 
         python = {
           path = ./python;
-          description = "Python development environment";
+          description = "Development environment for Python";
         };
       };
     };
