@@ -70,6 +70,11 @@
           description = "Elixir development environment";
         };
 
+        phoenix = {
+          path = ./phoenix;
+          description = "Phoenix development environment";
+        };
+
         python = {
           path = ./python;
           description = "Python development environment";
