@@ -76,7 +76,7 @@
         };
 
         python = {
-          path = ./python;
+          path = ./python/general;
           description = "Python development environment";
         };
       };
