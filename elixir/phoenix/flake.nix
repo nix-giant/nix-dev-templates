@@ -1,5 +1,5 @@
 {
-  description = "Phoenix development environment";
+  description = "Elixir development environment for Phoenix project";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/master";
