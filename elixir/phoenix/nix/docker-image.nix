@@ -14,7 +14,7 @@ let
   name = release.pname;
   tag =
     if self ? shortRev then
-      "${release.version}-${self.shortRev}"
+      "${self.lastModifiedDate}-${self.shortRev}"
     else
       throw "Refuse to build docker image from a dirty Git tree.";
 in
