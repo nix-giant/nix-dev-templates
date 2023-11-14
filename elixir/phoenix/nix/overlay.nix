@@ -9,10 +9,10 @@ let
       erlang = beamPackages.erlang;
       elixir = beamPackages.elixir_1_15;
 
-      fetchMixDeps = beamPackages.fetchMixDeps.override { inherit elixir; };
-      mixRelease = beamPackages.mixRelease.override { inherit elixir erlang fetchMixDeps; };
+      fetchMixDeps = pkgs.beamUtils.fetchMixDeps.override { inherit elixir; };
+      buildMixRelease = pkgs.beamUtils.buildMixRelease.override { inherit elixir; };
     in
-    { inherit erlang elixir fetchMixDeps mixRelease; };
+    { inherit erlang elixir fetchMixDeps buildMixRelease; };
 
   buildNodePackages = scope: rec {
     nodejs = scope.nodejs_18;
@@ -25,7 +25,10 @@ let
       stdenv.mkDerivation {
         name = "${pname}-${version}";
         inherit src;
-        npmDeps = fetchNpmDeps { inherit src hash; };
+        npmDeps = fetchNpmDeps {
+          name = "${pname}-cache-${version}";
+          inherit src hash;
+        };
         nativeBuildInputs = [ nodejs npmHooks.npmConfigHook ];
         postBuild = postBuild;
         installPhase = ''

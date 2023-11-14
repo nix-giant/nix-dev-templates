@@ -4,14 +4,22 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/master";
     flake-utils.url = "github:numtide/flake-utils";
+    beam-utils = {
+      url = "github:nix-giant/nix-beam-utils";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-utils.follows = "flake-utils";
+    };
   };
 
-  outputs = { self, nixpkgs, flake-utils, ... }@inputs:
+  outputs = { self, nixpkgs, flake-utils, beam-utils, ... }@inputs:
     flake-utils.lib.eachDefaultSystem (system:
       let
         pkgs = import nixpkgs {
           inherit system;
-          overlays = [ (import ./nix/overlay.nix) ];
+          overlays = [
+            beam-utils.overlays.default
+            (import ./nix/overlay.nix)
+          ];
         };
       in
       {
