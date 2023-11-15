@@ -1,5 +1,28 @@
 {
   "nodes": {
+    "beam-utils": {
+      "inputs": {
+        "flake-utils": [
+          "flake-utils"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1699966074,
+        "narHash": "sha256-U3z/fp5w8kM/e/AGK0MLSynWPwcevo3+lue4fO7ztZc=",
+        "owner": "nix-giant",
+        "repo": "nix-beam-utils",
+        "rev": "58fddf7cfb8e00064d2bb10ceba86afc8d19c865",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-giant",
+        "repo": "nix-beam-utils",
+        "type": "github"
+      }
+    },
     "flake-utils": {
       "inputs": {
         "systems": "systems"
@@ -15,29 +38,6 @@
       "original": {
         "owner": "numtide",
         "repo": "flake-utils",
-        "type": "github"
-      }
-    },
-    "nix-beam-utils": {
-      "inputs": {
-        "flake-utils": [
-          "flake-utils"
-        ],
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1699942447,
-        "narHash": "sha256-LTwo+uGs5Bnb9/a974MGklQRd032q5uEDUylPNtZTy8=",
-        "owner": "nix-giant",
-        "repo": "nix-beam-utils",
-        "rev": "a1de5f0295581045460a04859fb84c652c655b15",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nix-giant",
-        "repo": "nix-beam-utils",
         "type": "github"
       }
     },
@@ -59,8 +59,8 @@
     },
     "root": {
       "inputs": {
+        "beam-utils": "beam-utils",
         "flake-utils": "flake-utils",
-        "nix-beam-utils": "nix-beam-utils",
         "nixpkgs": "nixpkgs"
       }
     },
