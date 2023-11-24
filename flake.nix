@@ -65,6 +65,11 @@
 
     {
       templates = {
+        shell = {
+          path = ./shell/general;
+          description = "Shell development environment";
+        };
+
         elixir = {
           path = ./elixir/general;
           description = "Elixir development environment";
