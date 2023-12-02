@@ -37,7 +37,7 @@ let
         if [[ -L $path ]]; then
           echo "fixing local package - $package"
           rm $path
-          cp -r ${mixDeps}/$package node_modules/
+          cp -r ${mixDeps}/deps/$package node_modules/
         fi
       done
     '';
@@ -46,7 +46,7 @@ in
 buildMixRelease {
   inherit pname version src;
 
-  mixFodDeps = mixDeps;
+  inherit mixDeps;
   nativeBuildInputs = [ nodejs ];
 
   removeCookie = false;
