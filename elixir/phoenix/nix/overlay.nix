@@ -10,7 +10,7 @@ let
       elixir = beamPackages.elixir_1_15;
 
       fetchMixDeps = pkgs.beamUtils.fetchMixDeps.override { inherit elixir; };
-      buildMixRelease = pkgs.beamUtils.buildMixRelease.override { inherit elixir; };
+      buildMixRelease = pkgs.beamUtils.buildMixRelease.override { inherit erlang elixir; };
     in
     { inherit erlang elixir fetchMixDeps buildMixRelease; };
 
