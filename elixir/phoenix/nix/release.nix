@@ -9,7 +9,7 @@ let
     # TODO: add extra patterns besides ones specified by .gitignore, such as /fly.toml
   ] ../.;
 
-  inherit (myEnv.beamPackages.minimal) fetchMixDeps buildMixRelease;
+  inherit (myEnv.beamPackages) fetchMixDeps buildMixRelease;
   inherit (myEnv.nodePackages) nodejs fetchNpmDeps;
 
   mixDeps = fetchMixDeps {
