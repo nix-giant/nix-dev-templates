@@ -17,7 +17,7 @@
               ${exec "nixpkgs-fmt"} **/*.nix
             '';
             update = prev.writeScriptBin "update" ''
-              for dir in `ls -d */`; do # Iterate through all the templates
+              for dir in `ls -d */*`; do # Iterate through all the templates
                 (
                   cd $dir
                   ${exec "nix"} flake update # Update flake.lock
