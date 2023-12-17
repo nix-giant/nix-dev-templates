@@ -1,5 +1,4 @@
-{ self
-, nixpkgs
+{ nixpkgs
 , release
 , hostSystem
 , dockerTools
@@ -10,18 +9,13 @@
 }:
 let
   hostPkgs = import nixpkgs { system = hostSystem; };
-
   name = release.pname;
-  tag =
-    if self ? shortRev then
-      "${self.lastModifiedDate}-${self.shortRev}"
-    else
-      throw "Refuse to build docker image from a dirty Git tree.";
 in
 (dockerTools.override {
   writePython3 = hostPkgs.buildPackages.writers.writePython3;
 }).streamLayeredImage {
-  inherit name tag;
+  inherit name;
+  tag = "latest";
 
   contents = [
     dockerTools.caCertificates
