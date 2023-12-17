@@ -75,6 +75,11 @@
           description = "Elixir development environment";
         };
 
+        elixir-library = {
+          path = ./elixir/library;
+          description = "Elixir development environment for library";
+        };
+
         elixir-phoenix = {
           path = ./elixir/phoenix;
           description = "Elixir development environment for Phoenix project";
