@@ -30,7 +30,7 @@ in
   config = {
     Env = [
       "LOCALE_ARCHIVE=${glibcLocalesUtf8}/lib/locale/locale-archive"
-      "LANG=C.UTF-8"
+      "LC_ALL=en_US.UTF-8"
       "TERM=vt100"
     ];
     WorkingDir = release;
