@@ -10,16 +10,16 @@
         ]
       },
       "locked": {
-        "lastModified": 1701611401,
-        "narHash": "sha256-xEZd6n7NxEXJ7ayMjg3Ul9yPPBlVBC8ZOp3hWhk2ong=",
+        "lastModified": 1706525950,
+        "narHash": "sha256-vEWJzLR78MQoPSWL94bFWAJ67pv2dSBR7Z2U1aM8J5A=",
         "owner": "nix-giant",
-        "repo": "nix-beam-utils",
-        "rev": "60a429092c8a67386e3a61f36d75ca9003abb509",
+        "repo": "beam-utils",
+        "rev": "73414719ac8921e5314898d7f3cdbdedd3adc1fc",
         "type": "github"
       },
       "original": {
         "owner": "nix-giant",
-        "repo": "nix-beam-utils",
+        "repo": "beam-utils",
         "type": "github"
       }
     },
