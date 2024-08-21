@@ -1,4 +1,9 @@
-{ lib, myEnv, nix-gitignore, ... }:
+{
+  lib,
+  myEnv,
+  nix-gitignore,
+  ...
+}:
 let
   # TODO: adjust pname, version and src
   pname = "example";

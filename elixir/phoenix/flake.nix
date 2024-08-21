@@ -11,8 +11,16 @@
     };
   };
 
-  outputs = { self, nixpkgs, flake-utils, beam-utils, ... }@inputs:
-    flake-utils.lib.eachDefaultSystem (system:
+  outputs =
+    {
+      self,
+      nixpkgs,
+      flake-utils,
+      beam-utils,
+      ...
+    }@inputs:
+    flake-utils.lib.eachDefaultSystem (
+      system:
       let
         pkgs = import nixpkgs {
           inherit system;
@@ -31,15 +39,14 @@
           let
             release = pkgs.myCallPackage ./nix/release.nix { };
 
-            buildDockerImage = hostSystem: pkgs.myCallPackage ./nix/docker-image.nix ({
-              inherit release hostSystem;
-            } // inputs);
-            docker-images = builtins.listToAttrs (map
-              (hostSystem: {
+            buildDockerImage =
+              hostSystem: pkgs.myCallPackage ./nix/docker-image.nix ({ inherit release hostSystem; } // inputs);
+            docker-images = builtins.listToAttrs (
+              map (hostSystem: {
                 name = "docker-image-triggered-by-${hostSystem}";
                 value = buildDockerImage hostSystem;
-              })
-              flake-utils.lib.defaultSystems);
+              }) flake-utils.lib.defaultSystems
+            );
           in
           { inherit release; } // docker-images;
       }

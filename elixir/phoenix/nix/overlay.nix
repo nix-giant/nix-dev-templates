@@ -2,7 +2,8 @@ _final: prev:
 let
   pkgs = prev;
 
-  buildBeamPackages = scope:
+  buildBeamPackages =
+    scope:
     let
       beamPackages = with scope; packagesWith interpreters.erlang_26;
 
@@ -12,12 +13,26 @@ let
       fetchMixDeps = pkgs.beamUtils.fetchMixDeps.override { inherit elixir; };
       buildMixRelease = pkgs.beamUtils.buildMixRelease.override { inherit erlang elixir; };
     in
-    { inherit erlang elixir fetchMixDeps buildMixRelease; };
+    {
+      inherit
+        erlang
+        elixir
+        fetchMixDeps
+        buildMixRelease
+        ;
+    };
 
   buildNodePackages = scope: rec {
     nodejs = scope.nodejs_18;
 
-    fetchNpmDeps = { pname, version, src, hash, postBuild ? "" }:
+    fetchNpmDeps =
+      {
+        pname,
+        version,
+        src,
+        hash,
+        postBuild ? "",
+      }:
       let
         inherit (scope) stdenv buildPackages fetchNpmDeps;
         npmHooks = buildPackages.npmHooks.override { inherit nodejs; };
@@ -29,7 +44,10 @@ let
           name = "${pname}-cache-${version}";
           inherit src hash;
         };
-        nativeBuildInputs = [ nodejs npmHooks.npmConfigHook ];
+        nativeBuildInputs = [
+          nodejs
+          npmHooks.npmConfigHook
+        ];
         postBuild = postBuild;
         installPhase = ''
           mkdir -p "$out"
@@ -46,7 +64,5 @@ rec {
     nodePackages = buildNodePackages pkgs;
   };
 
-  myCallPackage = pkgs.lib.callPackageWith (pkgs // {
-    inherit myEnv;
-  });
+  myCallPackage = pkgs.lib.callPackageWith (pkgs // { inherit myEnv; });
 }

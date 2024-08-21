@@ -1,36 +1,40 @@
-{ stdenv
-, lib
-, mkShell
-, myEnv
-, libnotify
-, inotify-tools
-, terminal-notifier
-, darwin
-, ...
+{
+  stdenv,
+  lib,
+  mkShell,
+  myEnv,
+  libnotify,
+  inotify-tools,
+  terminal-notifier,
+  darwin,
+  ...
 }:
 mkShell {
-  packages = [
-    myEnv.beamPackages.erlang
-    myEnv.beamPackages.elixir
-    myEnv.nodePackages.nodejs
-  ] ++
-  # Linux only
-  lib.optionals stdenv.isLinux [
-    # for ExUnit notifier
-    libnotify
+  packages =
+    [
+      myEnv.beamPackages.erlang
+      myEnv.beamPackages.elixir
+      myEnv.nodePackages.nodejs
+    ]
+    ++
+    # Linux only
+    lib.optionals stdenv.isLinux [
+      # for ExUnit notifier
+      libnotify
 
-    # for package - file_system
-    inotify-tools
-  ] ++
-  # Darwin only
-  lib.optionals stdenv.isDarwin [
-    # for ExUnit notifier
-    terminal-notifier
+      # for package - file_system
+      inotify-tools
+    ]
+    ++
+      # Darwin only
+      lib.optionals stdenv.isDarwin [
+        # for ExUnit notifier
+        terminal-notifier
 
-    # for package - file_system
-    darwin.apple_sdk.frameworks.CoreFoundation
-    darwin.apple_sdk.frameworks.CoreServices
-  ];
+        # for package - file_system
+        darwin.apple_sdk.frameworks.CoreFoundation
+        darwin.apple_sdk.frameworks.CoreServices
+      ];
 
   shellHook = ''
     # limit mix to current project
