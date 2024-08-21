@@ -27,8 +27,6 @@
               # limit mix to current project
               mkdir -p .nix-mix
               export MIX_HOME=$PWD/.nix-mix
-
-              # rewire executables
               export PATH=$MIX_HOME/bin:$PATH
               export PATH=$MIX_HOME/escripts:$PATH
 
