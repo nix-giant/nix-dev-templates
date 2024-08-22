@@ -2,7 +2,7 @@
   description = "A collection of Nix flake templates for development.";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs";
+    nixpkgs.url = "github:NixOS/nixpkgs/release-24.05";
   };
 
   outputs =
@@ -12,11 +12,12 @@
         (
           final: prev:
           let
+            pkgs = prev;
             exec = pkg: "${prev.${pkg}}/bin/${pkg}";
           in
           {
             format = prev.writeScriptBin "format" ''
-              ${exec "nixfmt"} *
+              ${pkgs.nixfmt-rfc-style}/bin/nixfmt *
             '';
             update = prev.writeScriptBin "update" ''
               for dir in `ls -d */*`; do # Iterate through all the templates
