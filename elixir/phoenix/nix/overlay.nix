@@ -5,10 +5,10 @@ let
   buildBeamPackages =
     scope:
     let
-      beamPackages = with scope; packagesWith interpreters.erlang_26;
+      beamPackages = with scope; packagesWith interpreters.erlang_27;
 
       erlang = beamPackages.erlang;
-      elixir = beamPackages.elixir_1_15;
+      elixir = beamPackages.elixir_1_17;
 
       fetchMixDeps = pkgs.beamUtils.fetchMixDeps.override { inherit elixir; };
       buildMixRelease = pkgs.beamUtils.buildMixRelease.override { inherit erlang elixir; };
@@ -23,7 +23,7 @@ let
     };
 
   buildNodePackages = scope: rec {
-    nodejs = scope.nodejs_18;
+    nodejs = scope.nodejs_20;
 
     fetchNpmDeps =
       {
