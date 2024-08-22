@@ -35,18 +35,22 @@
           default = pkgs.myCallPackage ./nix/shell.nix { };
         };
 
+        # # Overview
+        #
         # To get an overview of all available packages, run:
         #
         #     $ nix flake show
         #
         # You'll see `release` and something like `docker-image-triggered-by-<hostSystem>`.
         #
-        # To build a release or a docker image on `x86_64-linux`, run:
+        # # Examples
+        #
+        # To build a `x86_64-linux` release or a `x86_64-linux` docker image, run:
         #
         #     $ nix build '.#packages.x86_64-linux.release'
         #     $ nix build '.#packages.x86_64-linux.docker-image-triggered-by-x86_64-linux'
         #
-        # To build a docker image on different platform (let's say `aarch64-darwin`), run:
+        # To build a `x86_64-linux` docker image on different platform (let's say `aarch64-darwin`), run:
         #
         #     $ nix build '.#packages.x86_64-linux.docker-image-triggered-by-aarch64-darwin'
         #
