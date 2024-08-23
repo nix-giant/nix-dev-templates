@@ -1,4 +1,5 @@
 {
+  self,
   lib,
   myEnv,
   nix-gitignore,
@@ -56,9 +57,25 @@ buildMixRelease {
 
   removeCookie = false;
 
-  preBuild = ''
-    ln -s ${npmDeps}/node_modules assets/node_modules
-  '';
+  preBuild = lib.concatStringsSep "\n" [
+    # create a fake .git for the access of current commit hash via `git rev-parse HEAD`
+    (
+      let
+        rev = if self ? rev then self.rev else throw "Refusing to build a release from a dirty Git tree.";
+      in
+      ''
+        mkdir -p .git
+        mkdir -p .git/objects
+        mkdir -p .git/refs
+        echo "${rev}" > .git/HEAD
+      ''
+    )
+
+    # link node_modules
+    ''
+      ln -s ${npmDeps}/node_modules assets/node_modules
+    ''
+  ];
 
   postBuild = ''
     HOME=$(pwd) mix assets.deploy

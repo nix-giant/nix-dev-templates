@@ -56,7 +56,7 @@
         #
         packages =
           let
-            release = pkgs.myCallPackage ./nix/release.nix { };
+            release = pkgs.myCallPackage ./nix/release.nix ({ } // inputs);
 
             buildDockerImage =
               hostSystem: pkgs.myCallPackage ./nix/docker-image.nix ({ inherit release hostSystem; } // inputs);
