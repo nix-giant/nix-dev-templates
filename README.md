@@ -5,13 +5,13 @@ A collection of Nix flake templates for development.
 ## Usage
 
 ```console
-nix flake init --template github:c4710n/nix-dev-templates#name
+nix flake init --template github:nix-giant/nix-dev-templates#name
 ```
 
 An example:
 
 ```console
-nix flake init --template github:c4710n/nix-dev-templates#elixir
+nix flake init --template github:nix-giant/nix-dev-templates#elixir
 ```
 
 ## Similar projects
