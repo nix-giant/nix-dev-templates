@@ -1,8 +1,6 @@
 # nix-dev-templates
 
-[![built with nix](https://builtwithnix.org/badge.svg)](https://builtwithnix.org)
-
-> A collection of Nix flake templates for development.
+A collection of Nix flake templates for development.
 
 ## Usage
 
