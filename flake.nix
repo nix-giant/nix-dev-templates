@@ -100,11 +100,6 @@
             description = "Elixir development environment for library";
           };
 
-          elixir-phoenix = {
-            path = ./elixir/phoenix;
-            description = "Elixir development environment for Phoenix project";
-          };
-
           python = {
             path = ./python/general;
             description = "Python development environment";
