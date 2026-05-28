@@ -1,6 +1,4 @@
 {
-  description = "Elixir development environment";
-
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs";
     flake-utils.url = "github:numtide/flake-utils";
@@ -22,7 +20,7 @@
           with pkgs;
           mkShell {
             packages = [
-              beam.packages.erlang_26.elixir_1_15
+              beam.packages.erlang_28.elixir_1_19
             ]
             ++
               # Linux only

@@ -1,6 +1,4 @@
 {
-  description = "Elixir development environment for library";
-
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs";
     flake-utils.url = "github:numtide/flake-utils";
@@ -21,7 +19,7 @@
         devShells.default =
           with pkgs;
           mkShell {
-            packages = [ beam.packages.erlang_26.elixir_1_15 ];
+            packages = [ beam.packages.erlang_28.elixir_1_19 ];
 
             shellHook = ''
               # limit mix to current project
