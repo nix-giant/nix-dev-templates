@@ -2,7 +2,7 @@
   description = "A collection of Nix flake templates for development.";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/release-24.05";
+    nixpkgs.url = "github:NixOS/nixpkgs";
   };
 
   outputs =
@@ -17,7 +17,7 @@
           in
           {
             format = prev.writeScriptBin "format" ''
-              ${pkgs.nixfmt-rfc-style}/bin/nixfmt *
+              ${pkgs.nixfmt-tree}/bin/treefmt *
             '';
             update = prev.writeScriptBin "update" ''
               for dir in `ls -d */*`; do # Iterate through all the templates
@@ -40,7 +40,7 @@
                 --experimental-features 'nix-command flakes' \
                 flake init \
                 --template \
-                "github:c4710n/nix-dev-templates#''${TEMPLATE}"
+                "github:nix-giant/nix-dev-templates#''${TEMPLATE}"
             '';
           }
         )
